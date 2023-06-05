@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Count() {
-  const [count, setCount] = useState(0);
-
+  const countState = useSelector((state) => state.counter.count);
+  const dispatch = useDispatch();
   return (
     <>
       <div className='card'>
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        <button onClick={() => dispatch({ type: "INCREMENT_COUNTER" })}>
+          count is {countState}
         </button>
       </div>
     </>
